@@ -1,0 +1,36 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 mt-4">
+            <h3>Update Post</h3>
+            <form [formGroup]="postForm" (ngSubmit)="updatePost()">
+                <div class="mb-3">
+                    <label for="title" class="form-label">Title</label>
+                    <input type="email" class="form-control" formControlName="title" placeholder="Enter Title">
+                    <div *ngIf="postForm.get('title').touched && !postForm.get('title').valid">
+                        <div *ngIf="postForm.get('title').errors.required">
+                            Title is Required
+                        </div>
+                        <div *ngIf="postForm.get('title').errors.minlength">
+                            Title should be 8 character long
+                        </div>
+                    </div>
+                  </div>
+                  <div class="mb-3">
+                    <label for="exampleFormControlTextarea1" class="form-label">Description</label>
+                    <textarea class="form-control" formControlName="description" placeholder="Enter Description" rows="3"></textarea>
+                    <div *ngIf="postForm.get('description').touched && !postForm.get('description').valid">
+                        <div *ngIf="postForm.get('description').errors.required">
+                            Description is Required
+                        </div>
+                        <div *ngIf="postForm.get('description').errors.minlength">
+                            Description should be 8 character long
+                        </div>
+                    </div>
+                  </div>
+                  <div>
+                      <button [disabled]="!postForm.valid" class="btn btn-primary">Update Post</button>
+                  </div>
+            </form>
+        </div>
+    </div>
+</div>
